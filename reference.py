@@ -14,7 +14,7 @@ while currentframe < desired_frame:
     ret, frame = cam.read()
 
     if ret:
-        img_name = "C:/Users/Gerrard/Documents/Live_Face_Recognition/Images/{}_{}.jpg".format(name, img_counter)
+        img_name = "C:/Users/Gerrard/Documents/Live_Face_Recognition/Images/{}_{}.jpg".format(name, img_counter)#Change path name into your path
 
         cv2.imwrite(img_name, frame)
 
