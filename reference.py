@@ -8,7 +8,7 @@ cam = cv2.VideoCapture(0)
 desired_frame = 5
 currentframe = 0
 img_counter = 1
-frame_delay = 0.5
+frame_delay = 0.5   
 
 while currentframe < desired_frame:
     ret, frame = cam.read()
