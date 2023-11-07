@@ -10,7 +10,7 @@ counter = 0
 
 face_match = False
 
-path= glob.glob("C:/Users/Gerrard/Documents/Live_Face_Recognition/Images/*.jpg")
+path= glob.glob("C:/Users/Gerrard/Documents/Live_Face_Recognition/Images/*.jpg")#change path name into your path
 
 for file in path:
     reference_img = cv2.imread(file) 
