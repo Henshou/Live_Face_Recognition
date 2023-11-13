@@ -4,7 +4,6 @@ from deepface import DeepFace
 import glob
 import subprocess
 
-
 cam = cv2.VideoCapture(0)
 
 cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -31,6 +30,7 @@ def check_face(frame):
         face_match = False
 
 
+
 while True:
     ret, frame= cam.read()
 
@@ -44,13 +44,12 @@ while True:
 
         if face_match:
             subprocess.call(["python", "match_ui.py"])
-            cam.release()
-            cv2.destroyAllWindows()
             break
-        else:
-            cv2.putText(frame, "NO MATCH!", (20,450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,255), 3)
-
+        else: 
+            cv2.putText(frame, "NO MATCH!" , (20, 450), cv2.FONT_HERSHEY_SIMPLEX, 2,(0, 0, 255), 3)
+    
         cv2.imshow("Face Recognition", frame)
+
 
     key =cv2.waitKey(1)
     if key == ord("q"):
