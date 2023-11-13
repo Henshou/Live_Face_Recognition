@@ -2,8 +2,13 @@ import threading
 import cv2
 from deepface import DeepFace
 import glob
+import subprocess
+
 
 cam = cv2.VideoCapture(0)
+
+cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 360)
 
 
 counter = 0
@@ -38,15 +43,19 @@ while True:
         counter += 1
 
         if face_match:
-            cv2.putText(frame, "MATCH!", (20,450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,255,0), 3)
+            subprocess.call(["python", "match_ui.py"])
+            cam.release()
+            cv2.destroyAllWindows()
+            break
         else:
-            cv2.putText(frame, " NO MATCH!", (20,450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,255), 3)
+            cv2.putText(frame, "NO MATCH!", (20,450), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,255), 3)
 
-        cv2.imshow("Video", frame)
+        cv2.imshow("Face Recognition", frame)
 
-    key = cv2.waitKey(1)
+    key =cv2.waitKey(1)
     if key == ord("q"):
         break
-    
 
+
+cam.release()
 cv2.destroyAllWindows()
